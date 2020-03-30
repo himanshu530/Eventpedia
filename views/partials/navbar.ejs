@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="color: black;">
+  <img src="images/logo.png" width=100 height=50 style="padding:5px"></img>
+  <a class="navbar-brand" href="/" style="color : white;font-size : 1.8em " style="font-family: sans-serif;">EventPedia</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style="padding-left: 30px; padding-right: 30px; margin-left: 120px; margin-right: 120px;">
+      <% if(user == undefined){ %>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <% }else{ %>
+                    <li class="nav-item"><a class="nav-link"  href="/loggedIn" >Home</a></li>
+                <% } %>
+                <li class="nav-item"><a class="nav-link" href="/aboutus" >About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact" >Connect</a></li>
+       <form class="form-inline my-2 my-lg-0 col-sm-6" action="findByLocation" method="POST">
+            <input style="color : white" class="form-control mr-sm-2" type="search" placeholder="Location" name="location" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+    </ul>
+     <% if(user != undefined){ %>
+      <% if( user.userType == 'society'){ %>
+          <ul class="navbar-nav ml-auto mt-10">
+              <li class="nav-item"><a class="nav-link btn-dark" href="/addEvent" >Add Event</a></li>
+          </ul>
+        <% }else{ %>         <% }  %>
+        <ul class="navbar-nav ml-auto mt-10">
+            <li class="nav-item"><a class="nav-link btn-dark" href="logout">Logout</a></li>
+        </ul>
+    <%} %>
+  </div>
+</nav>
